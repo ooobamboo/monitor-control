@@ -17,7 +17,7 @@ USAGE:
 ARGS:
     <OUTPUT_NAME>      output name such as DP-1
     <FEATURE_CODE>     feature code in decimal or 0xFF or FFh format
-    <FEATURE_VALUE>    value to be set; when not present show current value
+    <FEATURE_VALUE>    value expression to be set; when not present show current value
 
 OPTIONS:
     -h, --help       Print help information
@@ -31,6 +31,21 @@ E.g.
 monitor-control DP-2 16
 # set brightness to 50
 monitor-control DP-2 16 50
+# set brightness to 50% of the monitor's max value
+monitor-control DP-2 16 50%
+# raise brightness by 10 units or 10%
+monitor-control DP-2 16 +10
+monitor-control DP-2 16 +10%
+# lower brightness by 50 units or 50%
+monitor-control DP-2 16 50-
+monitor-control DP-2 16 50%-
 ```
+
+Valid `FEATURE_VALUE` forms:
+
+- specific value, e.g. `500`
+- percentage value, e.g. `50%`
+- specific delta, e.g. `50-` or `+10`
+- percentage delta, e.g. `50%-` or `+10%`
 
 <small>Scripts to determine which monitor to adjust and show indicators like [wob](https://github.com/francma/wob) are left to other projects.</small>
